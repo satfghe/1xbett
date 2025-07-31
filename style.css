@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a2e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.game-container {
+    position: relative;
+    max-width: 100%;
+    max-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-image {
+    max-width: 100%;
+    max-height: 100vh;
+    width: auto;
+    height: auto;
+    display: block;
+}
+
+.grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.grid-cell {
+    position: absolute;
+    border: 3px solid #00ff00;
+    background-color: rgba(0, 255, 0, 0.2);
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.grid-cell.active {
+    opacity: 1;
+}
+
+.play-button-overlay {
+    position: absolute;
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 10px;
+    z-index: 10;
+    transition: background-color 0.2s ease;
+}
+
+.play-button-overlay:hover {
+    background-color: rgba(0, 255, 0, 0.1);
+}
+
+/* استجابة للشاشات الصغيرة */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .game-container {
+        width: 100%;
+    }
+    
+    .game-image {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* استجابة للشاشات الكبيرة */
+@media (min-width: 1200px) {
+    .game-image {
+        max-width: 600px;
+    }
+}
+
+/* تحسينات للأجهزة اللوحية */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .game-image {
+        max-width: 80%;
+    }
+}
+
