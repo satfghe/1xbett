@@ -1,20 +1,51 @@
-/* المربع في حالته العادية (يجب أن يكون بدون لون خلفية ليكون شفافاً) */
+/* style.css */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: transparent; /* <-- تم التعديل هنا */
+    font-family: sans-serif;
+}
+
+.game-container {
+    position: relative;
+    width: 360px;
+    height: 640px;
+    background-image: url('game-image.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+.grid-container {
+    position: absolute;
+    top: 24.5%;
+    left: 11%;
+    width: 78%;
+    height: 45%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 8px;
+}
+
 .grid-item {
     width: 100%;
     height: 100%;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-    /* تأكد من عدم وجود أي سطر background-color هنا */
 }
 
-/* فقط عندما يختار الكود مربعاً، يضيف له هذا الكلاس ويظهر اللون الأخضر الشفاف */
 .grid-item.selected {
-    background-color: rgba(21, 255, 0, 0.7); /* لون أخضر مع شفافية */
-    box-shadow: 0 0 15px rgba(21, 255, 0, 1);
-    border: 1px solid #fff;
+    background-color: rgba(21, 255, 0, 0.4); /* غيّرنا 0.7 إلى 0.4 لزيادة الشفافية */
+    box-shadow: 0 0 15px rgba(21, 255, 0, 1);
+    border: 1px solid #fff;
 }
 
-/* الزر يجب أن يكون شفافاً أيضاً */
 .play-button {
     position: absolute;
     bottom: 12.5%;
@@ -23,5 +54,4 @@
     height: 9%;
     cursor: pointer;
     border-radius: 50px;
-    /* تأكد من عدم وجود أي سطر background-color هنا أيضاً */
 }
