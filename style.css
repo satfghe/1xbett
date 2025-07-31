@@ -1,101 +1,57 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* style.css */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #1a1a2e;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    padding: 20px;
+    height: 100vh;
+    margin: 0;
+    background-color: #1a1a2e;
+    font-family: sans-serif;
 }
 
 .game-container {
     position: relative;
-    max-width: 100%;
-    max-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 360px;
+    height: 640px;
+    background-image: url('game-image.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
 }
 
-.game-image {
-    max-width: 100%;
-    max-height: 100vh;
-    width: auto;
-    height: auto;
-    display: block;
-}
-
-.grid-overlay {
+.grid-container {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 24.5%;
+    left: 11%;
+    width: 78%;
+    height: 45%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 8px;
+}
+
+.grid-item {
     width: 100%;
     height: 100%;
-    pointer-events: none;
-    z-index: 1;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-.grid-cell {
+.grid-item.selected {
+    background-color: rgba(21, 255, 0, 0.7);
+    box-shadow: 0 0 15px rgba(21, 255, 0, 1);
+    border: 1px solid #fff;
+}
+
+.play-button {
     position: absolute;
-    border: 3px solid #00ff00;
-    background-color: rgba(0, 255, 0, 0.2);
-    border-radius: 8px;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    pointer-events: none;
-    z-index: 5;
-}
-
-.grid-cell.active {
-    opacity: 1;
-}
-
-.play-button-overlay {
-    position: absolute;
+    bottom: 12.5%;
+    left: 38%;
+    width: 24%;
+    height: 9%;
     cursor: pointer;
-    background-color: transparent;
-    border-radius: 10px;
-    z-index: 10;
-    transition: background-color 0.2s ease;
+    border-radius: 50px;
 }
-
-.play-button-overlay:hover {
-    background-color: rgba(0, 255, 0, 0.1);
-}
-
-/* استجابة للشاشات الصغيرة */
-@media (max-width: 768px) {
-    body {
-        padding: 10px;
-    }
-    
-    .game-container {
-        width: 100%;
-    }
-    
-    .game-image {
-        width: 100%;
-        height: auto;
-    }
-}
-
-/* استجابة للشاشات الكبيرة */
-@media (min-width: 1200px) {
-    .game-image {
-        max-width: 600px;
-    }
-}
-
-/* تحسينات للأجهزة اللوحية */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .game-image {
-        max-width: 80%;
-    }
-}
-
