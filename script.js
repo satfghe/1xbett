@@ -106,83 +106,66 @@ document.addEventListener('DOMContentLoaded', function() {
         return Array.from(selected);
     }
     
-    // إنشاء وعرض المربعات المختارة
-    function showSafeCells() {
+    // عرض المربعات المختارة
+    function renderCells(cellIndexes) {
         // إزالة المربعات السابقة
         clearPreviousCells();
         
-        // اختيار مربعات جديدة
-        selectedCells = selectRandomCells();
+        if (!cellIndexes || cellIndexes.length === 0) return;
+
         const positions = calculateGridPositions();
         
         // إنشاء وعرض المربعات
-        selectedCells.forEach(cellIndex => {
+        cellIndexes.forEach(cellIndex => {
             const position = positions[cellIndex];
+            if (!position) return;
+
             const cellElement = document.createElement('div');
-            
             cellElement.className = 'grid-cell';
-            cellElement.style.position = 'absolute';
             cellElement.style.top = position.top + 'px';
             cellElement.style.left = position.left + 'px';
             cellElement.style.width = position.width + 'px';
             cellElement.style.height = position.height + 'px';
-            cellElement.style.border = '3px solid #00ff00';
-            cellElement.style.backgroundColor = 'rgba(0, 255, 0, 0.2)';
-            cellElement.style.borderRadius = '8px';
-            cellElement.style.opacity = '0';
-            cellElement.style.transition = 'opacity 0.3s ease-in-out';
-            cellElement.style.pointerEvents = 'none';
-            cellElement.style.zIndex = '5';
             
             gridOverlay.appendChild(cellElement);
             
-            // تأثير الظهور التدريجي
+            // تأثير الظهور التدريجي بإضافة كلاس active
             setTimeout(() => {
-                cellElement.style.opacity = '1';
+                cellElement.classList.add('active');
             }, 100);
         });
     }
-    
+
     // إزالة المربعات السابقة
     function clearPreviousCells() {
         const existingCells = gridOverlay.querySelectorAll('.grid-cell');
         existingCells.forEach(cell => {
-            cell.style.opacity = '0';
+            cell.classList.remove('active');
             setTimeout(() => {
                 if (cell.parentNode) {
                     cell.parentNode.removeChild(cell);
                 }
-            }, 300);
+            }, 300); // انتظار انتهاء الانتقال
         });
     }
     
     // تحديث المواقع عند تغيير حجم النافذة
     function updatePositions() {
         updatePlayButtonPosition();
-        if (selectedCells.length > 0) {
-            showSafeCells();
-        }
+        renderCells(selectedCells);
     }
     
     // إضافة مستمع الحدث للزر
     playButtonOverlay.addEventListener('click', function(e) {
         e.preventDefault();
-        showSafeCells();
+        selectedCells = selectRandomCells();
+        renderCells(selectedCells);
         
-        // تأثير بصري للزر
+        // تأثير بصري للزر عند النقر
         this.style.backgroundColor = 'rgba(0, 255, 0, 0.3)';
         setTimeout(() => {
             this.style.backgroundColor = 'transparent';
         }, 200);
-    });
-    
-    // إضافة تأثير hover للزر
-    playButtonOverlay.addEventListener('mouseenter', function() {
-        this.style.backgroundColor = 'rgba(0, 255, 0, 0.1)';
-    });
-    
-    playButtonOverlay.addEventListener('mouseleave', function() {
-        this.style.backgroundColor = 'transparent';
     });
     
     // تحديث المواقع عند تحميل الصورة
@@ -191,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // تحديث المواقع عند تغيير حجم النافذة
     window.addEventListener('resize', updatePositions);
     
-    // تحديث المواقع الأولي
+    // تحديث المواقع الأولي إذا كانت الصورة محملة بالفعل
     if (gameImage.complete) {
         updatePositions();
     }
