@@ -5,7 +5,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: transparent; /* <-- تم التعديل هنا */
+    background-color: #1a1a2e;
     font-family: sans-serif;
 }
 
@@ -41,9 +41,9 @@ body {
 }
 
 .grid-item.selected {
-    background-color: rgba(21, 255, 0, 0.4); /* غيّرنا 0.7 إلى 0.4 لزيادة الشفافية */
-    box-shadow: 0 0 15px rgba(21, 255, 0, 1);
-    border: 1px solid #fff;
+    background-color: rgba(21, 255, 0, 0.7);
+    box-shadow: 0 0 15px rgba(21, 255, 0, 1);
+    border: 1px solid #fff;
 }
 
 .play-button {
