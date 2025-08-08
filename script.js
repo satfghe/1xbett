@@ -1,28 +1,17 @@
-// script.js
-const gridContainer = document.querySelector('.grid-container');
-const playButton = document.getElementById('playButton');
-const totalSquares = 25;
+const scene = document.getElementById('scene');
+const playBtn = document.getElementById('play');
 
-for (let i = 0; i < totalSquares; i++) {
-    const square = document.createElement('div');
-    square.classList.add('grid-item');
-    gridContainer.appendChild(square);
+function toggleReveal() {
+  const willReveal = !scene.classList.contains('reveal');
+  scene.classList.toggle('reveal', willReveal);
+  playBtn.setAttribute('aria-pressed', String(willReveal));
+  playBtn.title = willReveal ? 'Hide' : 'Play';
 }
 
-playButton.addEventListener('click', () => {
-    const allSquares = document.querySelectorAll('.grid-item');
-
-    allSquares.forEach(square => {
-        square.classList.remove('selected');
-    });
-
-    const selectedIndices = new Set();
-    while (selectedIndices.size < 3) {
-        const randomIndex = Math.floor(Math.random() * totalSquares);
-        selectedIndices.add(randomIndex);
-    }
-
-    selectedIndices.forEach(index => {
-        allSquares[index].classList.add('selected');
-    });
+playBtn.addEventListener('click', toggleReveal);
+playBtn.addEventListener('keydown', (e) => {
+  if (e.key === ' ' || e.key === 'Enter') {
+    e.preventDefault();
+    toggleReveal();
+  }
 });
