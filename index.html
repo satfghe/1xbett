@@ -1,25 +1,15 @@
-<!doctype html>
-<html lang="ar">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Gems Mines Interactive</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Gems Mines</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="card" id="card">
-    <div class="bg" role="img" aria-label="Gems Mines screen"></div>
-
-    <!-- شبكة الخانات -->
-    <div class="grid-overlay" id="grid"></div>
-
-    <!-- زر التشغيل -->
-    <div class="play-btn" id="playBtn" title="تشغيل">
-      <div class="play-icon" aria-hidden="true"></div>
+    <div class="game-container">
+        <div class="grid" id="grid"></div>
+        <div class="play-btn" id="playBtn"></div>
     </div>
-
-    <div class="toast" id="toast">تم اختيار 3 مواقع!</div>
-  </div>
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
