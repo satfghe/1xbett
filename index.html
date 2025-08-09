@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gems Mines — واجهة الاختيار الثلاثي</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="game-wrap">
+    <header class="header">
+      <div class="logo">
+        <span class="g">G</span><span class="ems">ems</span>
+        <span class="mines">Mines</span>
+      </div>
+      <div class="side-tabs left-tab">عادي</div>
+      <div class="side-tabs right-tab">تشغيل تلقائي</div>
+    </header>
+
+    <section class="board-area">
+      <div class="grid" id="grid" aria-label="شبكة اللعب 5 في 5">
+        <!-- Cells injected by JS -->
+      </div>
+
+      <div class="bet-bar">ضع رهان</div>
+
+      <div class="stats-row">
+        <div class="stat">
+          <div class="stat-label">صناديق</div>
+          <div class="stat-value" id="boxesCount">0 / 25</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">الماس</div>
+          <div class="stat-value" id="diamondCount">0</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">مخاطر</div>
+          <div class="stat-value" id="riskPercent">0%</div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="btn ghost" id="coinsBtn" title="المحفظة">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M4 7h16v10H4z" /></svg>
+        </div>
+
+        <button class="btn play" id="playBtn" aria-live="polite" title="ابدأ">
+          <svg viewBox="0 0 24 24" class="play-icon" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+        </button>
+
+        <div class="btn bomb" id="bombBtn" title="خطر">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2a2 2 0 012 2v6a6 6 0 11-8 0V4a2 2 0 012-2h2z"/></svg>
+        </div>
+      </div>
+
+    </section>
+
+    <footer class="credits">تم التصميم بإعادة رسم احترافية — يمكنك تعديل الألوان بسهولة</footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
